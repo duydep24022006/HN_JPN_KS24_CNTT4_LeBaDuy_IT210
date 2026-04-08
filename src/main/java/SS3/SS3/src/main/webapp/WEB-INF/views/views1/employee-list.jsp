@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.example.ss3.BT45P.model.Employee" %>
+<%@ page import="com.example.ss3.model.Employee" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: LENOVO

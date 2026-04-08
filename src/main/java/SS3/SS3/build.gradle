@@ -14,18 +14,33 @@ ext {
     junitVersion = '5.13.2'
 }
 
-sourceCompatibility = '8'
-targetCompatibility = '8'
+sourceCompatibility = '17'
+targetCompatibility = '17'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
-
 dependencies {
-    compileOnly('jakarta.servlet:jakarta.servlet-api:6.1.0')
+    // JSTL API
+    implementation "jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.2"
+    // JSTL Implementation (Glassfish)
+    implementation "org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1"
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    // JSP API
+    implementation "jakarta.servlet.jsp:jakarta.servlet.jsp-api:3.1.1"
+
+    // Spring MVC
+    implementation "org.springframework:spring-webmvc:7.0.6"
+
+    // Servlet API (Tomcat sẽ cung cấp khi chạy)
+    compileOnly "jakarta.servlet:jakarta.servlet-api:6.1.0"
+
+    // MySQL Connector
+    implementation "com.mysql:mysql-connector-j:9.5.0"
+
+    // JUnit
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 }
 
 test {

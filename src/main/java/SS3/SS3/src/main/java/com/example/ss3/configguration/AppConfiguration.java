@@ -1,4 +1,4 @@
-package com.example.ss3.BT45P.configguration;
+package com.example.ss3.configguration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

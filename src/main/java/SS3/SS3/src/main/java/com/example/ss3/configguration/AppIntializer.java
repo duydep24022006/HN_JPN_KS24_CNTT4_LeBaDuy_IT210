@@ -1,4 +1,4 @@
-package com.example.ss3.BT45P.configguration;
+package com.example.ss3.configguration;
 import org.jspecify.annotations.Nullable;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

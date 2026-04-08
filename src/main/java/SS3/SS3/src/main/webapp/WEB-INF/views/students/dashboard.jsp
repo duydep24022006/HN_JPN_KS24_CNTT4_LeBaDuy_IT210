@@ -1,13 +1,7 @@
-<%@Để hoàn chỉnh đặc tả SRS cho **StudentHub**, mình sẽ viết nốt phần còn lại (View Dashboard và cấu hình Spring MVC) để bạn có thể chạy ngay mà không phải lo bug vặt.
 
-        ---
-
-        ## 📌 View JSP
-
-        ### `students/dashboard.jsp`
-        ```jsp
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <html>
 <head><title>Dashboard</title></head>

@@ -1,4 +1,4 @@
-package com.example.ss3.BT45P.model;
+package com.example.ss3.model;
 
 public class Employee {
     private int id;

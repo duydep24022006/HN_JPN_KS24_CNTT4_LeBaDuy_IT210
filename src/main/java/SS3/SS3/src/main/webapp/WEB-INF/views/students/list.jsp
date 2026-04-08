@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <html>
 <head><title>Danh sách sinh viên</title></head>
@@ -36,7 +37,7 @@
                     <c:otherwise><span style="color:blue">${s.status}</span></c:otherwise>
                 </c:choose>
             </td>
-            <td><a href="detail?id=${s.id}">Xem</a></td>
+            <td><a href="students/detail?id=${s.id}">Xem</a></td>
         </tr>
     </c:forEach>
 </table>

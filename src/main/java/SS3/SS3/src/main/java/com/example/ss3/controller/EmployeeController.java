@@ -1,4 +1,4 @@
-package com.example.ss3.controller.new_way;
+package com.example.ss3.controller;
 
 import com.example.ss3.model.Employee;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Controller
 public class EmployeeController {
-    @GetMapping({"/","employee"})
+    @GetMapping({"employee"})
     public String employee(Model model)
     {
         List<Employee> employees;
@@ -22,7 +22,6 @@ public class EmployeeController {
                         new Employee(4, "Pham Thi D", "Marketing", 13000.0),
                         new Employee(5, "Hoang Van E", "Sales", 2000.0)
                 )
-
         );
         model.addAttribute("employees", employees);
         return "views1/employee-list";
