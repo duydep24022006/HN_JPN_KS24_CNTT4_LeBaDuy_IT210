@@ -3,19 +3,35 @@ package com.example.ss5.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.thymeleaf.spring6.SpringTemplateEngine;
+import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.example.ss5")
 public class AppConfig {
     @Bean
-    public ViewResolver viewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/WEB-INF/views/");
-        viewResolver.setSuffix(".jsp");
+    public SpringResourceTemplateResolver templateResolever(){
+        SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
+        templateResolver.setPrefix("/WEB-INF/views/");
+        templateResolver.setSuffix(".html");
+        templateResolver.setCharacterEncoding("UTF-8");
+        return templateResolver;
+    }
+
+    @Bean
+    public SpringTemplateEngine templateEngine(){
+        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+        templateEngine.setTemplateResolver(templateResolever());
+        return templateEngine;
+    }
+    @Bean
+    public ThymeleafViewResolver viewResolver(){
+        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+        viewResolver.setTemplateEngine(templateEngine());
+        viewResolver.setCharacterEncoding("UTF-8");
         return viewResolver;
     }
 }
