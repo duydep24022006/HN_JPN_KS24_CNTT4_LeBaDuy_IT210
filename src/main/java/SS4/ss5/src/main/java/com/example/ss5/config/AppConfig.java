@@ -1,5 +1,6 @@
 package com.example.ss5.config;
 
+import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +26,7 @@ public class AppConfig {
     public SpringTemplateEngine templateEngine(){
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolever());
+        templateEngine.addDialect(new LayoutDialect());
         return templateEngine;
     }
     @Bean

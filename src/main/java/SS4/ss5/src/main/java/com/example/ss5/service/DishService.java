@@ -22,4 +22,20 @@ public class DishService {
     public List<Dish> findAll() {
         return new ArrayList<>(dishes);
     }
-}
+    public Dish findById(int id) {
+        for (Dish dish : dishes) {
+            if (dish.getId() == id) {
+                return dish;
+            }
+        }
+        return null;
+    }
+    public Dish updateDish(Dish updatedDish) {
+        for (int i = 0; i < dishes.size(); i++) {
+            if (dishes.get(i).getId() == updatedDish.getId()) {
+                dishes.set(i, updatedDish);
+                return updatedDish;
+            }
+        }
+        return null; // nếu không tìm thấy để cập nhật
+    }}
