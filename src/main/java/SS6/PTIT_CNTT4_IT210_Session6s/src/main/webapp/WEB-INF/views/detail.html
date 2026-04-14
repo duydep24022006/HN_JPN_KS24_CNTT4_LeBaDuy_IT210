@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết khóa học</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="layouts/layout :: nav"></div>
+
+<div class="container mt-4">
+    <h2>Chi tiết khóa học</h2>
+
+    <div th:if="${course != null}">
+        <p><strong>Mã khóa học:</strong> <span th:text="${course.code}"></span></p>
+        <p><strong>Tên khóa học:</strong> <span th:text="${course.name}"></span></p>
+        <p><strong>Trình độ:</strong> <span th:text="${course.level}"></span></p>
+        <p><strong>Học phí:</strong> <span th:text="${#numbers.formatDecimal(course.price, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'"></span></p>
+        <p><strong>Giảng viên:</strong> <span th:text="${course.teacher}"></span></p>
+        <p><strong>Ngày khai giảng:</strong> <span th:text="${#dates.format(course.startDate,'dd/MM/yyyy')}"></span></p>
+        <p><strong>Thời lượng:</strong> <span th:text="${course.duration}"></span></p>
+        <p><strong>Trạng thái:</strong> <span th:text="${course.full} ? 'HẾT CHỖ' : 'CÒN CHỖ'"></span></p>
+    </div>
+
+    <div th:if="${course == null}" class="text-danger">
+        <p th:text="${error}"></p>
+    </div>
+
+    <a th:href="@{/home}" class="btn btn-secondary mt-3">Quay lại danh sách</a>
+</div>
+
+<div th:replace="layouts/layout :: footer"></div>
+</body>
+</html>

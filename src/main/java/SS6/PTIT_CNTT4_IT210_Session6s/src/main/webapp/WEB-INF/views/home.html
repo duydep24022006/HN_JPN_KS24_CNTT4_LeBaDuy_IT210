@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Edu-Path - Quản lý khóa học</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <style>
+        body { padding-top: 70px; }
+        .navbar-brand { font-weight: bold; font-size: 1.3rem; }
+        .content-wrapper { padding: 20px 0; }
+        .badge-full { background-color: #dc7540; color: white; font-size: 0.8rem; }
+        .card-title { font-size: 1.2rem; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+<div th:replace="layouts/layout :: nav"></div>
+
+<!-- Content -->
+<div class="container content-wrapper">
+    <h1 class="mb-4">Chào mừng đến với Edu-Path!</h1>
+    <p>Hệ thống quản lý khóa học tiếng Anh giúp nhân viên học vụ tra cứu, xem chi tiết và cập nhật trạng thái lớp học.</p>
+
+    <!-- Filter Form -->
+    <div class="card mb-4">
+        <div class="card-header">Tìm kiếm khóa học</div>
+        <div class="card-body">
+            <form th:action="@{/course/list}" method="get" class="form-row align-items-end">
+                <div class="form-group col-md-3">
+                    <label for="level">Trình độ</label>
+                    <select class="form-control" id="level" name="level">
+                        <option value="">Tất cả</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="maxFee">Học phí tối đa</label>
+                    <input type="number" class="form-control" id="maxFee" name="maxFee" placeholder="VD: 5000000">
+                </div>
+                <div class="form-group col-md-3">
+                    <button type="submit" class="btn btn-primary btn-block">Tìm kiếm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Course Grid -->
+    <div class="">
+        <h1 class="mb-4">Danh sách khóa học</h1>
+
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>#</th>
+                <th>Tên khóa học</th>
+                <th>Trình độ</th>
+                <th>Học phí</th>
+                <th>Trạng thái</th>
+                <th>Giảng viên</th>
+                <th>Chi tiết</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="course : ${courses}">
+                <td th:text="${course.id}"></td>
+                <td th:text="${course.name}"></td>
+
+                <td th:text="${course.level}"></td>
+        
+                <th th:text="${#numbers.formatDecimal(course.price, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'"></th>
+                <td th:text="${course.full} ? 'HẾT CHỖ' : 'CÒN CHỖ'"></td>
+                <td th:text="${course.teacher}"></td>
+                <td>
+                    <a class="btn btn-info btn-sm" th:href="@{/course/detail/{id}(id = ${course.id})}">Xem chi tiết</a>
+                    <a class="btn btn-info btn-sm" th:href="@{/course/delete/{id}(id = ${course.id})}">xoa</a>
+                </td>
+            </tr>
+
+            <!-- Thông báo nếu danh sách rỗng -->
+            <tr th:if="${#lists.isEmpty(courses)}">
+                <td colspan="7" class="text-center text-danger">Hiện chưa có lớp học phù hợp với trình độ này</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:replace="layouts/layout :: footer"></div>
+
+<!-- Optional JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
