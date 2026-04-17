@@ -6,7 +6,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
@@ -47,9 +46,5 @@ public class AppConfig implements WebMvcConfigurer {
         return viewResolver;
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        String path = "D:\\java-210\\210B\\src\\main\\java\\SS7\\ss7\\src\\main\\webapp\\WEB-INF\\images\\";
-        registry.addResourceHandler("/images/**").addResourceLocations("file:" + path);
-    }
+
 }
