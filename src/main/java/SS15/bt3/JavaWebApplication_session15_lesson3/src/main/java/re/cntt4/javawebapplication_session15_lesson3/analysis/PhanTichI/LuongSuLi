@@ -1,0 +1,19 @@
+Luồng MVC:
+
+Trình duyệt: gửi request GET /orders?status=PROCESSING&page=1&sortBy=createdDate&direction=DESC.
+
+Controller: nhận tham số từ URL.
+
+Service:
+
+Kiểm tra page (nếu âm → gán về 0; nếu lớn hơn tổng số trang → gán về trang cuối).
+
+Kiểm tra sortBy (nếu không hợp lệ → gán mặc định là createdDate).
+
+Gọi repository với Pageable.
+
+Repository: truy vấn DB bằng Derived Query hoặc @Query.
+
+Controller: gắn dữ liệu vào Model.
+
+View (JSP/Thymeleaf): hiển thị danh sách đơn hàng, phân trang, nút sắp xếp.

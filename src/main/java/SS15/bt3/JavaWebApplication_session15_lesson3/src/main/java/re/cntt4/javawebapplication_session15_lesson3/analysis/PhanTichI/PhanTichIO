@@ -1,0 +1,25 @@
+- Input (Query Parameters từ URL):
+
+userId: lấy từ session (người dùng đang đăng nhập).
+
+status: trạng thái đơn hàng (ví dụ: PROCESSING, DELIVERED, CANCELLED).
+
+page: số trang hiện tại (ví dụ: 0, 1, 2…).
+
+size: số đơn hàng mỗi trang (ví dụ: 10).
+
+sortBy: cột sắp xếp (ví dụ: createdDate, totalAmount).
+
+direction: hướng sắp xếp (ASC/DESC).
+
+- Output (Model gửi xuống View JSP/Thymeleaf):
+
+  orders: danh sách đơn hàng của trang hiện tại.
+
+  currentPage: số trang hiện tại.
+
+  totalPages: tổng số trang.
+
+  statusFilter: trạng thái đang lọc.
+
+  sortBy, direction: thông tin sắp xếp để hiển thị lại trên giao diện.

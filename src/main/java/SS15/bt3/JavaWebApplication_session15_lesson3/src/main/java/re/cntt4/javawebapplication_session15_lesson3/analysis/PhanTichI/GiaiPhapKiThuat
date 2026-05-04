@@ -1,0 +1,9 @@
+Spring Data JPA Interfaces:
+
+Page: đại diện cho một trang dữ liệu.
+
+Pageable: đối tượng chứa thông tin phân trang và sắp xếp.
+
+Sort: đối tượng định nghĩa tiêu chí sắp xếp.
+
+ Sử dụng Page<Order> findByUserIdAndStatus(Long userId, String status, Pageable pageable);
