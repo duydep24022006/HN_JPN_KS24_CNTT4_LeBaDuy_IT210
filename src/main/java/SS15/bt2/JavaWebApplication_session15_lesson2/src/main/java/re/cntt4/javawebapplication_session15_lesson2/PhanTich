@@ -1,0 +1,7 @@
+Trong Spring Data JPA, khi bạn viết một câu lệnh UPDATE/DELETE bằng @Query, mặc định nó được coi là truy vấn chỉ đọc (select).
+
+Vì thiếu annotation @Modifying, Spring Data JPA sẽ không thực thi câu lệnh cập nhật xuống database.
+
+Kết quả: code biên dịch thành công, chạy không báo lỗi, nhưng dữ liệu trong DB không thay đổi.
+
+Đây chính là lý do hệ thống báo “Hủy thành công” nhưng trạng thái đơn hàng vẫn là PROCESSING.
