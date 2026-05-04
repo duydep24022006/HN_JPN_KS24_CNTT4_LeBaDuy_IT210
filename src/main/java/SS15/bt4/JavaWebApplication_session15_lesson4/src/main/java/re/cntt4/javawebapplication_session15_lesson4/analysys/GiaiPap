@@ -1,0 +1,17 @@
+Giải pháp 1 – Dùng findByCategoryAndStatus + saveAll()
+
+Repository: List<Product> findByCategoryAndStatus(String category, String status);
+
+Service: lấy toàn bộ danh sách sản phẩm (50.000 bản ghi), tính toán giá mới bằng vòng lặp, sau đó gọi saveAll().
+
+Ưu điểm: dễ hiểu, tận dụng cơ chế Dirty Checking của Hibernate.
+
+Nhược điểm: tốn RAM, chậm vì phải load toàn bộ entity vào bộ nhớ.
+
+Giải pháp 2 – Dùng @Modifying + @Query (JPQL UPDATE)
+
+Repository: viết query cập nhật trực tiếp xuống DB.
+
+Ưu điểm: nhanh, không cần load entity, chỉ một câu lệnh SQL.
+
+Nhược điểm: không đi qua Persistence Context, cần cẩn thận đồng bộ dữ liệu.

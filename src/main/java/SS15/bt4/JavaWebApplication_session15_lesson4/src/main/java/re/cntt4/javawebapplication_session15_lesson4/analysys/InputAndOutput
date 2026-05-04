@@ -1,0 +1,9 @@
+Input (từ Controller xuống Service):
+
+categoryName: tên danh mục cần giảm giá.
+
+discountPercentage: phần trăm giảm giá (ví dụ: 15).
+
+Output (Service trả về Controller):
+
+Thông báo kết quả: số sản phẩm được cập nhật, hoặc thông báo lỗi (nếu dữ liệu không hợp lệ).

@@ -1,0 +1,13 @@
+Nhận categoryName và discountPercentage từ Controller.
+
+Chặn bẫy dữ liệu:
+
+Nếu discountPercentage < 0 hoặc > 100 → throw CustomException.
+
+Nếu không tìm thấy sản phẩm nào trong danh mục → trả về thông báo “Không tìm thấy sản phẩm nào để cập nhật”.
+
+Tính toán giá mới theo công thức.
+
+Gọi Repository để cập nhật trực tiếp xuống DB.
+
+Trả về số lượng sản phẩm đã cập nhật.
