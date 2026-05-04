@@ -1,0 +1,15 @@
+Sai sót 1: Điều kiện giá
+
+Code hiện tại dùng findByCategoryAndPriceLessThan(...).
+
+Từ khóa LessThan nghĩa là < (nhỏ hơn), nên sản phẩm có giá bằng đúng mức giá nhập vào sẽ không được trả về.
+
+Quy tắc nghiệp vụ yêu cầu: giá ≤ Max Price (nhỏ hơn hoặc bằng).
+
+Sai sót 2: Điều kiện tồn kho
+
+Code hiện tại không kiểm tra stockQuantity.
+
+Vì vậy, sản phẩm hết hàng (stockQuantity = 0) vẫn xuất hiện trong kết quả.
+
+Quy tắc nghiệp vụ yêu cầu: chỉ trả về sản phẩm có stockQuantity > 0.
